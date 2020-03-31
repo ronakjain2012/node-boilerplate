@@ -2,7 +2,7 @@
 import mongoose from 'mongoose';
 
 import chalk from 'chalk';
-import config from './../env/index';
+import config from './../env/index.js';
 
 // Remove the warning with Promise
 mongoose.Promise = global.Promise;

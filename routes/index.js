@@ -1,11 +1,11 @@
-import { Router } from 'express';
+import express from 'express';
 import HTTPStatus from 'http-status';
-import APIError from '../app/services/error';
-import logErrorService from '../app/services/log';
-import ApiRoutes from './api'
-import WebRoutes from './web'
+import APIError from '../app/services/error.js';
+import logErrorService from '../app/services/log.js';
+import ApiRoutes from './api.js'
+import WebRoutes from './web.js'
 
-const routes = new Router();
+const routes = express.Router();
 
 routes.use('/',WebRoutes)
 routes.use('/api',ApiRoutes)

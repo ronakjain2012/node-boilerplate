@@ -1,5 +1,5 @@
-import { Router } from 'express';
+import express from 'express';
 
-const routes = new Router();
+const routes =  express.Router();
 
 export default routes

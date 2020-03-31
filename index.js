@@ -1,9 +1,9 @@
 import express from 'express';
 import chalk from 'chalk';
-import Heart from './config/heart';
-import Routes from './routes/index';
-import config from './config/env/index';
-import './config/db/mongo';
+import Heart from './config/heart.js';
+import Routes from './routes/index.js';
+import config from './config/env/index.js';
+import './config/db/mongo.js';
 
 const app = express();
 

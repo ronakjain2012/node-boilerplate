@@ -1,9 +1,9 @@
-import { Router } from 'express';
+import express from 'express';
 
-const routes = new Router();
+const routes =  express.Router();
 
 routes.get('/test', (req,res) => {
-    res.status(503).send({data:500/5});
+    res.status(200).send({data:500/5});
 });
 
 export default routes

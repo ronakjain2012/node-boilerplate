@@ -8,9 +8,9 @@ import helmet from 'helmet';
 import cors from 'cors';
 import expressStatusMonitor from 'express-status-monitor';
 
-import winstonInstance from './others/winston';
-import config from './env/index';
-import { ENV_PRODUCTION } from './const/const';
+import winstonInstance from './others/winston.js';
+import config from './env/index.js';
+import { ENV_PRODUCTION } from './const/const.js';
 
 const enableSuperPowers = !(config.ENV !== ENV_PRODUCTION);
 export default (app) => {

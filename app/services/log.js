@@ -6,11 +6,11 @@ import Raven from 'raven';
 import PrettyError from 'pretty-error';
 import HTTPStatus from 'http-status';
 
-import config from './../../config/env/index';
-import APIError, { RequiredError } from './error';
+import config from './../../config/env/index.js';
+import APIError, { RequiredError } from './error.js';
 
-const isProd = process.env.NODE_ENV === 'production';
-const isDev = process.env.NODE_ENV === 'development';
+// const isProd = process.env.NODE_ENV === 'production';
+// const isDev = process.env.NODE_ENV === 'development';
 
 // eslint-disable-next-line no-unused-vars
 export default function logErrorService(err, req, res, next) {
