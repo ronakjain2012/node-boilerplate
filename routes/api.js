@@ -1,9 +1,14 @@
 import express from 'express';
 
-const routes =  express.Router();
+const routes = express.Router();
 
-routes.get('/test', (req,res) => {
-    res.status(200).send({data:500/5});
-});
+routes
+  .route('/test')
+  .get((req,res) => {
+    res.send([65,56,56,56,56,56]);
+  })
+  .post((req,res) => {
+    res.send([65,56,56,56,56,56]);
+  });
 
-export default routes
+export default routes;

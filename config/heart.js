@@ -7,12 +7,11 @@ import methodOverride from 'method-override';
 import helmet from 'helmet';
 import cors from 'cors';
 import expressStatusMonitor from 'express-status-monitor';
-
-import winstonInstance from './others/winston.js';
+import winston from 'winston';
+import rfs from 'rotating-file-stream';
+import path from 'path';
 import config from './env/index.js';
-import { ENV_PRODUCTION } from './const/const.js';
 
-const enableSuperPowers = !(config.ENV !== ENV_PRODUCTION);
 export default (app) => {
   app.use(compression());
   app.use(bodyParser.json());
@@ -22,18 +21,35 @@ export default (app) => {
   app.use(cors());
   app.use(expressStatusMonitor());
   app.use(methodOverride());
-  if (enableSuperPowers) {
-    app.use(morgan('dev'));
-    expressWinston.requestWhitelist.push('body');
-    expressWinston.responseWhitelist.push('body');
-    app.use(
-      expressWinston.logger({
-        winstonInstance,
-        meta: true,
-        msg:
-          'HTTP {{req.method}} {{req.url}} {{res.statusCode}} {{res.responseTime}}ms',
-        colorStatus: true,
-      }),
-    );
+  if (config.ENABLE_SUPER_POWERS) {
+    if (config.MORGAN.ENABLE_MORGAN) {
+      let accessLogStream = null;
+      if (config.MORGAN.ENABLE_MORGAN_FILE_LOG) {
+        accessLogStream = rfs.createStream('access.log', {
+          interval: '1d', // rotate daily
+          path: path.join(config.ROOT_DIR + '/storage/logs', 'morgan'),
+        });
+        console.log('d', accessLogStream);
+        app.use(morgan('combined', { stream: accessLogStream }));
+      } else {
+        app.use(morgan('combined', {}));
+      }
+    }
+    if (config.WINSTON.WINSTON_REQUEST_LOGGING) {
+      app.use(
+        expressWinston.logger({
+          transports: [new winston.transports.Console()],
+          format: winston.format.combine(
+            winston.format.colorize(),
+            winston.format.json(),
+          ),
+          colorize: true,
+          meta: true,
+          msg:
+            'HTTP {{req.method}} {{req.url}} {{res.statusCode}} {{res.responseTime}}ms',
+          colorStatus: true,
+        }),
+      );
+    }
   }
 };
