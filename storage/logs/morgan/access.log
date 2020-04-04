@@ -1,5 +1,0 @@
-::1 - - [03/Apr/2020:13:59:41 +0000] "GET /api/test HTTP/1.1" 200 19 "-" "PostmanRuntime/7.24.0"
-::1 - - [03/Apr/2020:13:59:41 +0000] "GET /api/test HTTP/1.1" 200 19 "-" "PostmanRuntime/7.24.0"
-::1 - - [03/Apr/2020:13:59:42 +0000] "GET /api/test HTTP/1.1" 200 19 "-" "PostmanRuntime/7.24.0"
-::1 - - [03/Apr/2020:13:59:42 +0000] "GET /api/test HTTP/1.1" 200 19 "-" "PostmanRuntime/7.24.0"
-::1 - - [03/Apr/2020:14:11:28 +0000] "GET /api/test HTTP/1.1" 200 19 "-" "PostmanRuntime/7.24.0"

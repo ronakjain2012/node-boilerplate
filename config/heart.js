@@ -29,7 +29,6 @@ export default (app) => {
           interval: '1d', // rotate daily
           path: path.join(config.ROOT_DIR + '/storage/logs', 'morgan'),
         });
-        console.log('d', accessLogStream);
         app.use(morgan('combined', { stream: accessLogStream }));
       } else {
         app.use(morgan('combined', {}));

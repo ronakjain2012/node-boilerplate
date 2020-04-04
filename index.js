@@ -4,7 +4,7 @@ import Heart from './config/heart.js';
 import Routes from './routes/index.js';
 import config from './config/env/index.js';
 import './config/db/mongo.js';
-
+import './utils/globalHelpers.js';
 const app = express();
 Heart(app);
 

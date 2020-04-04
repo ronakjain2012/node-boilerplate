@@ -5,6 +5,7 @@ const routes = express.Router();
 routes
   .route('/test')
   .get((req,res) => {
+    logger.lg('aasassasasaas');
     res.send([65,56,56,56,56,56]);
   })
   .post((req,res) => {
