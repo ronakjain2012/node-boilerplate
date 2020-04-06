@@ -1,15 +1,11 @@
 import express from 'express';
+import * as testController from './../app/controllers/testController.js';
 
 const routes = express.Router();
 
 routes
   .route('/test')
-  .get((req,res) => {
-    logger.lg('aasassasasaas');
-    res.send([65,56,56,56,56,56]);
-  })
-  .post((req,res) => {
-    res.send([65,56,56,56,56,56]);
-  });
+  .get(testController.getTest)
+  .post(testController.postTest);
 
 export default routes;

@@ -17,6 +17,9 @@ const RAVEN = {
   ENABLE_RAVEN_ERROR_LOGGING: true,
 };
 
+//randommer for random data 
+const RNADOMMER_API = 'a74d8ee4a2a34705a8ebc0acdaa911df';
+
 /** PACKAGES */
 
 // Superpower is related to logging and debug to explore each request and action

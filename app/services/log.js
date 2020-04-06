@@ -9,50 +9,51 @@ import HTTPStatus from 'http-status';
 import config from './../../config/env/index.js';
 import APIError, { RequiredError } from './error.js';
 
-// const isProd = process.env.NODE_ENV === 'production';
-// const isDev = process.env.NODE_ENV === 'development';
-
-// eslint-disable-next-line no-unused-vars
 export default function logErrorService(err, req, res, next) {
-	if (!err) {
-		return new APIError(
-			'Error with the server!',
-			HTTPStatus.INTERNAL_SERVER_ERROR,
-			true,
-		);
-	}
+  if (!err) {
+    return new APIError(
+      'Error with the server!',
+      HTTPStatus.INTERNAL_SERVER_ERROR,
+      true,
+    );
+  }
 
-	// if (isProd) {
-	const raven = new Raven.Client(config.RAVEN_ID);
-	raven.captureException(err);
-	// }
+  if (config.RAVEN.ENABLE_RAVEN_ERROR_LOGGING) {
+    Raven.config(config.RAVEN.RAVEN_ID, {
+      release: `${config.APP.NAME}@${config.APP.RELESE_VERSION}`,
+      environment: `${config.ENV}`,
+      name: `${config.APP.NAME}`,
+      sendTimeout: 5,
+      sampleRate: 1,
+    }).install();
+    Raven.captureException(err);
+  }
 
-	// if (isDev) {
-	const pe = new PrettyError();
-	pe.skipNodeFiles();
-	pe.skipPackage('express');
+  if (config.RAVEN.ENABLE_RAVEN_ERROR_LOGGING) {
+    const pe = new PrettyError();
+    pe.skipNodeFiles();
+    pe.skipPackage('express');
 
-	// eslint-disable-next-line no-console
-	console.log(pe.render(err));
-	// }
+    console.log(pe.render(err));
+  }
 
-	const error = {
-		message: err.message || 'Internal Server Error.',
-	};
+  const error = {
+    message: err.message || 'Internal Server Error.',
+  };
 
-	if (err.errors) {
-		error.errors = {};
-		const { errors } = err;
-		if (Array.isArray(errors)) {
-			error.errors = RequiredError.makePretty(errors);
-		} else {
-			Object.keys(errors).forEach((key) => {
-				error.errors[key] = errors[key].message;
-			});
-		}
-	}
+  if (err.errors) {
+    error.errors = {};
+    const { errors } = err;
+    if (Array.isArray(errors)) {
+      error.errors = RequiredError.makePretty(errors);
+    } else {
+      Object.keys(errors).forEach((key) => {
+        error.errors[key] = errors[key].message;
+      });
+    }
+  }
 
-	res.status(err.status || HTTPStatus.INTERNAL_SERVER_ERROR).json(error);
+  res.status(err.status || HTTPStatus.INTERNAL_SERVER_ERROR).json(error);
 
-	return next();
+  return next();
 }

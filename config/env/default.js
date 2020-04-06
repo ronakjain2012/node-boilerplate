@@ -3,6 +3,13 @@
 const PORT = 3000;
 const JWT_SCRECT = 'JB64!#$sv438KJDsrh!@$KJASB';
 const JWT_TIMEOUT = 5000;
+const APP = {
+  NAME: 'node-boilerplate',
+  RELESE_VERSION: '0.0.1',
+  LOGO: '',
+  DEFAULT_LANGUAGE: 'EN',
+  COPYRIGHT: 'TIMESOURCE © 2020-2021', 
+};
 
 /** Database */
 
@@ -13,9 +20,12 @@ const MONGODB_DEBUG = false;
 
 // raven is morden tool to log errors/exceptions with help of mail and dashboard sentry.io
 const RAVEN = {
-  RAVEN_ID: 'https://472fb097833a470bab348e404c60de8f@sentry.io/5180553',
+  RAVEN_ID: '',
   ENABLE_RAVEN_ERROR_LOGGING: false,
 };
+
+//randommer for random data 
+const RNADOMMER_API = '';
 
 /** PACKAGES */
 
@@ -41,5 +51,7 @@ export default {
   RAVEN,
   ENABLE_SUPER_POWERS,
   MORGAN,
-  WINSTON
+  WINSTON,
+  RNADOMMER_API,
+  APP
 };

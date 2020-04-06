@@ -15,7 +15,7 @@ class ExtendableError extends Error {
 	}
 }
 
-class APIError {
+class APIError extends ExtendableError {
 	/**
    * Creates an API error.
    *
@@ -24,7 +24,7 @@ class APIError {
    * @param {Boolean} isPublic - Whether the message should be visible to user or not.
    */
 	constructor(message, status = httpStatus.INTERNAL_SERVER_ERROR, isPublic = false) {
-		new ExtendableError(message, status, isPublic);
+		super(message, status, isPublic);
 	}
 }
 

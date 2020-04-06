@@ -46,6 +46,9 @@
     "yarn": ">=0.20.3"
   },
   "dependencies": {
+    "@sentry/browser": "^5.15.4",
+    "@sentry/integrations": "^5.15.4",
+    "@sentry/node": "^5.15.4",
     "axios": "^0.19.2",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.19.0",
@@ -75,6 +78,8 @@
     "pretty-error": "^2.1.1",
     "pug": "^2.0.4",
     "raven": "^2.6.4",
+    "request": "^2.88.2",
+    "request-promise": "^4.2.5",
     "rotating-file-stream": "^2.0.2",
     "slug": "^2.1.1",
     "ultimate-pagination": "^1.0.0",
