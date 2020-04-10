@@ -27,12 +27,12 @@ const ENABLE_SUPER_POWERS = true;
 
 const MORGAN = {
   // morgan is for request logging in console
-  ENABLE_MORGAN: true,
+  ENABLE_MORGAN: false,
   ENABLE_MORGAN_FILE_LOG: true, // morgan log writing
 };
 
 const WINSTON = {
-  WINSTON_REQUEST_LOGGING: true,
+  WINSTON_REQUEST_LOGGING: false,
 };
 
 export default {
