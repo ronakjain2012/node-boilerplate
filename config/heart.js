@@ -1,4 +1,5 @@
 import bodyParser from 'body-parser';
+import express from 'express';
 import morgan from 'morgan';
 import compression from 'compression';
 import passport from 'passport';
@@ -11,6 +12,8 @@ import winston from 'winston';
 import rfs from 'rotating-file-stream';
 import path from 'path';
 import config from './env/index.js';
+import WebRoutes from './../routes/web.js';
+
 
 export default (app) => {
   app.use(compression());
@@ -20,7 +23,12 @@ export default (app) => {
   app.use(helmet());
   app.use(cors());
   app.use(expressStatusMonitor());
-  app.use(methodOverride());
+  app.use(methodOverride());  
+  app.use(express.static(path.join(config.ROOT_DIR, 'public')));
+  app.set('views', config.ROOT_DIR + '/public/views');
+
+  app.set('view engine', 'pug');
+  app.use('/',WebRoutes);
   if (config.ENABLE_SUPER_POWERS) {
     if (config.MORGAN.ENABLE_MORGAN) {
       let accessLogStream = null;
