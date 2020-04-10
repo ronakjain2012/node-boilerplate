@@ -44,5 +44,6 @@ export default {
   RAVEN,
   ENABLE_SUPER_POWERS,
   MORGAN,
-  WINSTON
+  WINSTON,
+  RNADOMMER_API,
 };
