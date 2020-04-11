@@ -1,9 +1,9 @@
-# Welcome to Node Boilerplate!
+# Welcome to Node Boilerplate! ![enter image description here](https://img.shields.io/badge/Development%20Status-Under%20Development-blueviolet)
 This is a full stack web-app boilerplate project with ExpressJS + MongoDB + PUG. It is NOT an out-of-box project. I make it in order to create an up-to-date starter kit which contains all important functions (user signup, login, oauth, profile, ...etc) except the business-logic.
 
 _This is just my personal boilerplate, it may or may not be a good fit for your project(s) but I tried to make it best as much as I can._  Inspired by  [dstroot/skeleton](https://github.com/dstroot/skeleton)  and  [sahat/hackathon-starter](https://github.com/sahat/hackathon-starter)
 
-**If you like my work, please  [donate](https://paypal.me/RonakBokaria?locale.x=en_GB). Thank you!**
+**If you like my work, please 💸 [donate](https://paypal.me/RonakBokaria?locale.x=en_GB). Thank you!**
 
 ## Table of Contents
 -   [Features](https://github.com/ronakjain2012/node-boilerplate/#features)
@@ -33,7 +33,96 @@ _This is just my personal boilerplate, it may or may not be a good fit for your 
 
 ## [Directory Layout](https://github.com/ronakjain2012/node-boilerplate/#directorylayout)
 
-
+     |-public
+	 | |-js
+	 | | |-script.js
+	 | |-views
+	 | | |-nav.pug
+	 | | |-index.pug
+	 | | |-layout
+	 | | | |-footer.pug
+	 | | | |-main.pug
+	 | | | |-header.pug
+	 | |-plugins
+	 | | |-holder
+	 | | | |-holder.js
+	 | | |-bootstrap
+	 | | | |-js
+	 | | | | |-bootstrap.js
+	 | | | |-css
+	 | | | | |-bootstrap.css
+	 | | |-popper
+	 | | | |-popper.min.js
+	 | |-css
+	 | | |-style.css
+	 |-userStorage
+	 |-utils
+	 | |-globalHelpers.js
+	 | |-helper.js
+	 | |-apiResponse.js
+	 |-locales
+	 | |-hi.js
+	 | |-en.js
+	 | |-fr.js
+	 | |-ru.js
+	 |-package.json
+	 |-index.js
+	 |-config
+	 | |-db
+	 | | |-mongo.js
+	 | |-others
+	 | | |-winston.js
+	 | |-heart.js
+	 | |-env
+	 | | |-index.js
+	 | | |-staging.js
+	 | | |-development.js
+	 | | |-integration.js
+	 | | |-default.js
+	 | | |-production.js
+	 | |-const
+	 | | |-const.js
+	 |-a.out
+	 |-__doc
+	 | |-dirStructure
+	 | | |-0.0.1
+	 | |-todos
+	 | | |-integrations
+	 |-.babelrc
+	 |-yarn-error.log
+	 |-build
+	 |-.env
+	 |-LICENSE
+	 |-.eslintrc.json
+	 |-.gitignore
+	 |-storage
+	 | |-seed
+	 | |-logs
+	 | | |-waring.log
+	 | | |-error.log
+	 | | |-morgan
+	 | | | |-access.log
+	 | | |-log.log
+	 | | |-info.log
+	 | |-.gitignore
+	 | |-migration
+	 |-routes
+	 | |-index.js
+	 | |-api.js
+	 | |-web.js
+	 |-README.md
+	 |-package-lock.json
+	 |-app
+	 | |-controllers
+	 | | |-testController.js
+	 | |-models
+	 | |-services
+	 | | |-error.js
+	 | | |-s3.js
+	 | | |-log.js
+	 |-.env.example
+	 |-webpack.config.js
+	 |-.prettierrc
 
 ## [Testimonials](https://github.com/ronakjain2012/node-boilerplate/#Testimonials)
 
