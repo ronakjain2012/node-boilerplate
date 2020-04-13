@@ -7,7 +7,7 @@ import ApiRoutes from './api.js';
 const routes = express.Router();
 
 routes.use('/api', ApiRoutes);
-routes.all('*', (req, res, next) =>
+routes.all('/api/*', (req, res, next) =>
   next(new APIError('Not Found!', HTTPStatus.NOT_FOUND, true)),
 );
 

@@ -1,0 +1,39 @@
+nav.navbar.navbar-expand-md.fixed-top.navbar-dark.bg-dark
+    a.navbar-brand(href='#') Offcanvas navbar
+    button.navbar-toggler.p-0.border-0(type='button', data-toggle='offcanvas')
+        span.navbar-toggler-icon
+    #navbarsExampleDefault.navbar-collapse.offcanvas-collapse
+        ul.navbar-nav.mr-auto
+            li.nav-item.active
+                a.nav-link(href='#')
+                    | Dashboard 
+                    span.sr-only (current)
+            li.nav-item
+                a.nav-link(href='#') Notifications
+            li.nav-item
+                a.nav-link(href='#') Profile
+            li.nav-item
+                a.nav-link(href='#') Switch account
+            li.nav-item.dropdown
+                a#dropdown01.nav-link.dropdown-toggle(href='http://example.com', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false') Settings
+                .dropdown-menu(aria-labelledby='dropdown01')
+                    a.dropdown-item(href='#') Action
+                    a.dropdown-item(href='#') Another action
+                    a.dropdown-item(href='#') Something else here
+        form.form-inline.my-2.my-lg-0
+            input.form-control.mr-sm-2(type='text', placeholder='Search', aria-label='Search')
+            button.btn.btn-outline-success.my-2.my-sm-0(type='submit') Search
+
+.nav-scroller.bg-white.box-shadow
+    nav.nav.nav-underline
+        a.nav-link.active(href='#') Dashboard
+        a.nav-link(href='#')
+            | Friends
+            span.badge.badge-pill.bg-light.align-text-bottom 27
+        a.nav-link(href='#') Explore
+        a.nav-link(href='#') Suggestions
+        a.nav-link(href='#') Link
+        a.nav-link(href='#') Link
+        a.nav-link(href='#') Link
+        a.nav-link(href='#') Link
+        a.nav-link(href='#') Link
