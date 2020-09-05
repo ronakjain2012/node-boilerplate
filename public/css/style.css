@@ -29,6 +29,19 @@ body {
   }
 }
 
+.navbar {
+  padding: 1rem 1rem;
+}
+
+.navbar-brand {
+  margin-right: 5rem;
+}
+
+.navbar-nav .nav-item, .navbar .btn {
+  padding: 0rem 1rem 0rem 1rem;
+  font-size: 22px;
+}
+
 .nav-scroller {
   position: relative;
   z-index: 2;

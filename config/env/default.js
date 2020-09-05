@@ -1,19 +1,19 @@
 /** Application */
 
 const PORT = 3000;
-const JWT_SCRECT = 'JB64!#$sv438KJDsrh!@$KJASB';
+const JWT_SECRET = 'JB64!#$sv438KJDsrh!@$KJASB';
 const JWT_TIMEOUT = 5000;
 const APP = {
-  NAME: 'node-boilerplate',
+  NAME: 'shopie',
   RELESE_VERSION: '0.0.1',
   LOGO: '',
   DEFAULT_LANGUAGE: 'EN',
-  COPYRIGHT: 'TIMESOURCE © 2020-2021', 
+  COPYRIGHT: 'shopie © 2020-2021', 
 };
 
 /** Database */
 
-const MONGODB_URL = 'mongodb://localhost/node-bp';
+const MONGODB_URL = 'mongodb+srv://loppy:loppy_qw12@node-vue-shop.om6wd.gcp.mongodb.net/shopie?retryWrites=true&w=majority';
 const MONGODB_DEBUG = false;
 
 /** Integrations */
@@ -44,7 +44,7 @@ const WINSTON = {
 
 export default {
   PORT,
-  JWT_SCRECT,
+  JWT_SECRET,
   JWT_TIMEOUT,
   MONGODB_URL,
   MONGODB_DEBUG,
