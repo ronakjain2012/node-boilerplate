@@ -30,9 +30,9 @@ export default (app) => {
   app.set('view engine', 'pug');
   app.use('/',WebRoutes);
   if (config.ENABLE_SUPER_POWERS) {
-    if (config.MORGAN.ENABLE_MORGAN) {
+    if (config.MORGAN_ENABLED) {
       let accessLogStream = null;
-      if (config.MORGAN.ENABLE_MORGAN_FILE_LOG) {
+      if (config.MORGAN_FILE_LOGGING) {
         accessLogStream = rfs.createStream('access.log', {
           interval: '1d', // rotate daily
           path: path.join(config.ROOT_DIR + '/storage/logs', 'morgan'),
@@ -42,7 +42,7 @@ export default (app) => {
         app.use(morgan('combined', {}));
       }
     }
-    if (config.WINSTON.WINSTON_REQUEST_LOGGING) {
+    if (config.WINSTON_ENABLED) {
       app.use(
         expressWinston.logger({
           transports: [new winston.transports.Console()],

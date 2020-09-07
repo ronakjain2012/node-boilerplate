@@ -23,7 +23,7 @@ app.listen(config.PORT, (err) => {
     Env: ${config.ENV} 🦄
     SuperPowers: ${config.ENABLE_SUPER_POWERS} 🌪
     Root: ${config.ROOT_DIR} 👶
-    MongoDB: ${config.MONGODB_URL} 🍀`),
+    MongoDB: ${config.DB_MONGODB_URL} 🍀`),
     );
   }
 });

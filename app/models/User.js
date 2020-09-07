@@ -3,7 +3,7 @@ const { Schema } = mongoose;
 
 import uniqueValidator from 'mongoose-unique-validator';
 import bcryptjs from 'bcryptjs';
-const { hashSync,compareSync } = bcryptjs;
+const { hashSync, compareSync } = bcryptjs;
 import jwt from 'jsonwebtoken';
 import config from './../../config/env/index.js';
 
@@ -48,13 +48,13 @@ const UserSchema = new Schema(
 UserSchema.plugin(uniqueValidator, {
   message: '{VALUE} already taken!',
 });
-UserSchema.pre('save', function(next) {
-    if (this.isModified('password')) {
-      this.password = this._hashPassword(this.password);
-      return next();
-    }
+UserSchema.pre('save', function (next) {
+  if (this.isModified('password')) {
+    this.password = this._hashPassword(this.password);
     return next();
-  });
+  }
+  return next();
+});
 UserSchema.methods = {
   toJSON() {
     return {

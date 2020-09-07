@@ -8,14 +8,7 @@ import config from './../env/index.js';
 mongoose.Promise = global.Promise;
 
 // If debug run the mongoose debug options
-mongoose.set('debug', config.MONGODB_DEBUG);
-
-// Connect the db with the url provide
-// try {
-//   mongoose.connect(config.MONGODB_URL);
-// } catch (err) {
-//   mongoose.createConnection(config.MONGODB_URL);
-// }
+// mongoose.set('debug', config.DB_MONGODB_DEBUG);
 
 function connect() {
   mongoose.connection
@@ -27,17 +20,19 @@ function connect() {
       ),
     )
     .on('error', (e) => {
+      console.log(e);
       throw e;
     })
     .on('disconnected', connect);
   try {
-    return mongoose.connect(config.MONGODB_URL, {
+    return mongoose.connect(config.DB_MONGODB_URL, {
       keepAlive: 1,
       useNewUrlParser: true,
       useUnifiedTopology: true,
+      useCreateIndex: true
     });
   } catch (err) {
-    return mongoose.createConnection(config.MONGODB_URL, {
+    return mongoose.createConnection(config.DB_MONGODB_URL, {
       keepAlive: 1,
       useNewUrlParser: true,
       useUnifiedTopology: true,

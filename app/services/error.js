@@ -1,5 +1,3 @@
-import httpStatus from 'http-status';
-
 /**
  * @extends Error
  */
@@ -23,7 +21,10 @@ class APIError extends ExtendableError {
    * @param {Number} status - HTTP status code of error.
    * @param {Boolean} isPublic - Whether the message should be visible to user or not.
    */
-	constructor(message, status = httpStatus.INTERNAL_SERVER_ERROR, isPublic = false) {
+	constructor(message, status = apiResponse.API_STATUS.UNPROCESSABLE_ENTITY, isPublic = true, err = {}) {
+		if(message===null) {
+			message = `${err.message} || ${err.statusCode}`;
+		}
 		super(message, status, isPublic);
 	}
 }

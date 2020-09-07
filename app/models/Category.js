@@ -8,8 +8,21 @@ const CategorySchema = new Schema(
       trim: true,
       required: [true, 'Name is required!'],
     },
+    __version: [
+      {
+        vIndex: {
+          type: Number,
+          default: 0,
+        },
+        vDoc: {},
+        createdAt: {
+          type: Date,
+          default: Date.now
+        }
+      }
+    ]
   },
-  { timestamps: true },
+  { timestamps: true, versionKey: '__v' },
 );
 
 CategorySchema.methods = {
@@ -20,6 +33,23 @@ CategorySchema.methods = {
     };
   },
 };
+
+CategorySchema.pre('save', function(next) {
+  if(this.__v == undefined) {
+    this.__v = 0;
+  } else {
+    this.__v++;
+    let oldDoc = this.toJSON();
+    oldDoc['_id'] = undefined;
+    this.__version.push({
+      vIndex: this.__v,
+      vDoc: oldDoc,
+      createdAt: Date.now
+    });
+  }
+  
+  return next();
+});
 
 let Category;
 
