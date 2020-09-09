@@ -23,6 +23,7 @@ export async function pagination(req, res, next) {
     }
     req.pagination = paginationDetails;
     res.pagination = paginationDetails;
+    res.routePath = req.route.path+'::'+req.originalUrl;
     req.paginationProcess = function(model) {
         try {
             if(this.pagination !== null){

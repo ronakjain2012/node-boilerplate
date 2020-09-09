@@ -1,3 +1,5 @@
+import {setApiCache} from '../app/middlewares/redisApiCache.js';
+import config from '../config/env/index.js';
 
 export const API_STATUS = {
   API_SUCCESS: 200,
@@ -30,6 +32,8 @@ export function successResponseWithData(res, msg, data) {
   if(res.pagination){
     resData['pagination'] = res.pagination;
     resData['pagination']['page'] = resData['pagination']['page']+1;
+    if(config.REDIS_API_CACHE)
+      setApiCache(res.routePath, resData);
   } else {
     resData['pagination'] = false;
   }

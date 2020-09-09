@@ -11,7 +11,8 @@ export default {
   PORT : 3000,
   JWT_SECRET : 'JB64!#$sv438KJDsrh!@$KJASB',
   JWT_TIMEOUT : 5000,
-
+  /** Redis API Response Caching */
+  REDIS_API_CACHE: false,
   /** Database */
   DB_DRIVER : 'mongodb',
   DB_MONGODB_URL : 'mongodb://localhost:27020/theboilerplate',
