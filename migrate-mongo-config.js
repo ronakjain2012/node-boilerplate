@@ -1,4 +1,4 @@
-import configs from './config/env/index.js';
+const configs = require('./config/env/index.js');
 const config = {
   mongodb: {
     url: configs.DB_MONGODB_URL,
@@ -11,4 +11,4 @@ const config = {
   changelogCollectionName: 'changelog',
 };
 
-export default config;
+module.exports = config;
