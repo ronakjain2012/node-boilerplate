@@ -10,7 +10,6 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'dist'),
     filename: '[name].bundle.js',
-    libraryTarget: 'commonjs2'
   },
   module: {
     rules: [

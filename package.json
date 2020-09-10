@@ -10,12 +10,8 @@
     "start": "cross-env NODE_ENV=development nodemon",
     "test": "cross-env NODE_ENV=test nodemon test",
     "test:watch": "nps test.watch",
-    "prod": "pm2-runtime start ecosystem.config.js --env production",
-    "dev": "cross-env NODE_ENV=development nodemon",
+    "dev": "cross-env NODE_ENV=development nodemon --experimental-modules --harmony",
     "dev:debug": "cross-env NODE_ENV=development nodemon --debug",
-    "db:seeds-user": "nps db.seedsUser",
-    "db:seeds-clear": "nps db.seedsClearUser",
-    "db:seeds-clear-user": "nps db.seedsClear",
     "doc": "nps doc",
     "doc:deploy": "nps doc.deploy",
     "format": "prettier --write \"**/*.+(js|jsx|json|css|md)\"",
@@ -41,9 +37,9 @@
   },
   "homepage": "https://github.com/ronakjain2012/node-boilerplate#readme",
   "engines": {
-    "node": ">= 6.10",
-    "npm": ">= 3.10",
-    "yarn": ">=0.20.3"
+    "node": ">= 12.10",
+    "npm": ">= 6.14",
+    "yarn": ">= 1.22"
   },
   "dependencies": {
     "@sentry/browser": "^5.15.4",
