@@ -1,8 +1,8 @@
 /* eslint-disable no-console */
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
-import chalk from 'chalk';
-import config from './../env/index.js';
+const chalk = require('chalk');
+const config = require('./../env/index.js');
 
 // Remove the warning with Promise
 mongoose.Promise = global.Promise;

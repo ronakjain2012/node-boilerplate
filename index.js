@@ -1,10 +1,11 @@
-import express from 'express';
-import chalk from 'chalk';
-import Heart from './config/heart.js';
-import Routes from './routes/index.js';
-import config from './config/env/index.js';
-import './config/db/mongo.js';
-import './utils/globalHelpers.js';
+const express = require('express');
+const chalk = require('chalk');
+const Heart = require('./config/heart.js');
+const Routes = require('./routes/index.js');
+const config = require('./config/env/index.js');
+require('./config/db/mongo.js');
+require('./utils/globalHelpers.js');
+
 const app = express();
 Heart(app);
 
@@ -28,4 +29,4 @@ app.listen(config.PORT, (err) => {
   }
 });
 
-export default app;
+module.exports = app;

@@ -2,12 +2,13 @@
  * Error handler for api routes
  */
 
-import Raven from 'raven';
-import PrettyError from 'pretty-error';
-import config from './../../config/env/index.js';
-import APIError, { RequiredError } from './error.js';
+const Raven = require('raven');
+const PrettyError = require('pretty-error');
+const config = require('./../../config/env/index.js');
+const APIError = require('./error.js');
+const { RequiredError } = require('./error.js');
 
-export default function logErrorService(err, req, res, next) {
+function logErrorService(err, req, res, next) {
   if (!err) {
     return new APIError(
       'Logging Issue!!',
@@ -50,3 +51,4 @@ export default function logErrorService(err, req, res, next) {
   res.status(err.status || apiResponse.API_STATUS.UNPROCESSABLE_ENTITY).json(error);
   return next();
 }
+module.exports = logErrorService;

@@ -1,4 +1,5 @@
-import logger from './../config/others/winston.js';
-import * as apiResponse from './apiResponse.js';
+const logger = require('./../config/others/winston.js');
+const apiResponse = require('./apiResponse.js');
 global.logger = logger;
 global.apiResponse = apiResponse;
+module.exports = apiResponse;

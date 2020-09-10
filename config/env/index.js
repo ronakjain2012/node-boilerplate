@@ -1,21 +1,21 @@
 /**
  * Module dependencies.
  */
-import {
+const {
   ENV_DEVELOPMENT,
   ENV_INTEGRATION,
   ENV_STAGING,
   ENV_PRODUCTION,
-} from './../const/const.js';
-import dotenv from 'dotenv';
-import path from 'path';
-import __default from './default.js';
-import development from './development.js';
-import integration from './integration.js';
-import staging from './staging.js';
-import production from './production.js';
-import fs from 'fs';
-const __dirname = path.resolve();
+} = require('./../const/const.js');
+const dotenv = require('dotenv');
+const path = require('path');
+const __default = require('./default.js');
+const development = require('./development.js');
+const integration = require('./integration.js');
+const staging = require('./staging.js');
+const production = require('./production.js');
+const fs = require('fs');
+__dirname = path.resolve();
 
 function envConfig(env) {
   switch (env) {
@@ -47,4 +47,4 @@ function withDefault() {
   return settings;
 }
 
-export default withDefault();
+module.exports = withDefault();

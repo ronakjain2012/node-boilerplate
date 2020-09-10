@@ -34,7 +34,7 @@ class APIError extends ExtendableError {
  *
  * @class RequiredError
  */
-export class RequiredError {
+exports = class RequiredError {
 	/**
    * Make error pretty
    *
@@ -49,6 +49,6 @@ export class RequiredError {
 			return nObj;
 		}, {});
 	}
-}
+};
 
-export default APIError;
+module.exports = APIError;

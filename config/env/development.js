@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   /** Application */  
   APP: {
     NAME: 'NodeBP - alpha',

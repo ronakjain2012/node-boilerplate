@@ -1,15 +1,18 @@
-export const DATE_FORMAT = 'Y-m-d';
-export const DATETIME_FORMAT = 'Y-m-d H:i:s';
-export const TIME_FORMAT = 'H:i:s';
+const DATE_FORMAT = 'Y-m-d';
+const DATETIME_FORMAT = 'Y-m-d H:i:s';
+const TIME_FORMAT = 'H:i:s';
 
 /* SuperHeros */
-export const ENV_DEVELOPMENT = 'development';
-export const ENV_INTEGRATION = 'integration';
-export const ENV_STAGING = 'staging';
-export const ENV_PRODUCTION = 'production';
+const ENV_DEVELOPMENT = 'development';
+const ENV_INTEGRATION = 'integration';
+const ENV_STAGING = 'staging';
+const ENV_PRODUCTION = 'production';
 
+exports.DATE_FORMAT = DATE_FORMAT;
+exports.DATETIME_FORMAT = DATETIME_FORMAT;
+exports.TIME_FORMAT = TIME_FORMAT;
 
-export default {
+module.exports = {
     DATE_FORMAT,
     DATETIME_FORMAT,
     TIME_FORMAT

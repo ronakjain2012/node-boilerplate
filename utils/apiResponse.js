@@ -1,62 +1,70 @@
-import {setApiCache} from '../app/middlewares/redisApiCache.js';
-import config from '../config/env/index.js';
+'use strict';
 
-export const API_STATUS = {
+// const { setApiCache } = require('../app/middlewares/redisApiCache.js');
+// const config = require('../config/env/index.js');
+
+const API_STATUS = {
   API_SUCCESS: 200,
   UNAUTHORIZED: 401, // login required
   BAD_REQUEST: 400, // Token Expired
-  SERVER_ERROR: 500, // Server Issue 
+  SERVER_ERROR: 500, // Server Issue
   UNPROCESSABLE_ENTITY: 422, // Validation Failed
   FORBIDDEN: 403, // User Is Blocked
-  NOT_FOUND: 404
+  NOT_FOUND: 404,
 };
 
-export function successResponse(res, msg) {
+exports.API_STATUS = API_STATUS;
+
+function successResponse(res, msg) {
   const data = {
     status: 1,
     message: msg,
   };
   return res.status(API_STATUS.API_SUCCESS).json(data);
 }
+exports.successResponse = successResponse;
 
-export function successRawResponse(res, data) {
+function successRawResponse(res, data) {
   return res.status(API_STATUS.API_SUCCESS).json(data);
 }
+exports.successRawResponse = successRawResponse;
 
-export function successResponseWithData(res, msg, data) {
+function successResponseWithData(res, msg, data) {
   const resData = {
     status: 1,
     message: msg,
     data,
   };
-  if(res.pagination){
+  if (res.pagination) {
     resData['pagination'] = res.pagination;
-    resData['pagination']['page'] = resData['pagination']['page']+1;
-    if(config.REDIS_API_CACHE)
-      setApiCache(res.routePath, resData);
+    resData['pagination']['page'] = resData['pagination']['page'] + 1;
+    // if (config.REDIS_API_CACHE) setApiCache(res.routePath, resData);
   } else {
     resData['pagination'] = false;
   }
   return res.status(API_STATUS.API_SUCCESS).json(resData);
 }
+exports.successResponseWithData = successResponseWithData;
 
-export function ErrorResponse(res, msg) {
+function ErrorResponse(res, msg) {
   const data = {
     status: 0,
     message: msg,
   };
   return res.status(API_STATUS.UNPROCESSABLE_ENTITY).json(data);
 }
+exports.ErrorResponse = ErrorResponse;
 
-export function notFoundResponse(res, msg) {
+function notFoundResponse(res, msg) {
   const data = {
     status: 0,
     message: msg,
   };
   return res.status(404).json(data);
 }
+exports.notFoundResponse = notFoundResponse;
 
-export function validationErrorWithData(res, msg, data) {
+function validationErrorWithData(res, msg, data) {
   const resData = {
     status: 0,
     message: msg,
@@ -64,19 +72,22 @@ export function validationErrorWithData(res, msg, data) {
   };
   return res.status(API_STATUS.UNPROCESSABLE_ENTITY).json(resData);
 }
+exports.validationErrorWithData = validationErrorWithData;
 
-export function unauthorizedResponse(res, msg) {
+function unauthorizedResponse(res, msg) {
   const data = {
     status: 0,
     message: msg,
   };
   return res.status(API_STATUS.UNAUTHORIZED).json(data);
 }
+exports.unauthorizedResponse = unauthorizedResponse;
 
-export function expiredAuthResponse(res, msg) {
+function expiredAuthResponse(res, msg) {
   const data = {
     status: 0,
     message: msg,
   };
   return res.status(API_STATUS.BAD_REQUEST).json(data);
 }
+exports.expiredAuthResponse = expiredAuthResponse;

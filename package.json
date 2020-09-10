@@ -4,7 +4,6 @@
   "description": "REST APIs with best perctices from top devs and projects on github with mongodb",
   "main": "index.js",
   "private": true,
-  "type": "module",
   "scripts": {
     "build": "nps build",
     "start": "cross-env NODE_ENV=development nodemon",
