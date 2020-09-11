@@ -15,7 +15,7 @@ const integration = require('./integration.js');
 const staging = require('./staging.js');
 const production = require('./production.js');
 const fs = require('fs');
-__dirname = path.resolve();
+const _dirname = path.resolve();
 
 function envConfig(env) {
   switch (env) {
@@ -28,6 +28,7 @@ function envConfig(env) {
     case ENV_PRODUCTION:
       return production;
     default:
+      console.warn(`\nEnv is not set, check env settings.`);
       return production;
   }
 }
@@ -36,7 +37,7 @@ function withDefault() {
   const env = process.env.NODE_ENV || ENV_DEVELOPMENT;
   let configDefault = {};
   configDefault.ENV = env;
-  configDefault.ROOT_DIR = path.join(__dirname, '');
+  configDefault.ROOT_DIR = path.join(_dirname, '');
   let fromEnv = dotenv.parse(fs.readFileSync('.env'));
   let settings = {
     ...__default, ...configDefault, ...envConfig(env)
