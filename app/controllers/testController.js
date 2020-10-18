@@ -4,6 +4,7 @@ import rp from 'request-promise';
 import config from './../../config/env/index.js';
 export async function getTest(req, res, next) {
   try {
+    console.log(config);
     let apiCalls = [
       rp({
         method: 'GET',

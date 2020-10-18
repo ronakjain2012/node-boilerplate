@@ -1,7 +1,7 @@
 /** Application */
 
 const PORT = 3000;
-const JWT_SCRECT = 'JB64!#$sv438KJDsrh!@$KJASB';
+const JWT_SECRET = 'JB64!#$sv438KJDsrh!@$KJASB';
 const JWT_TIMEOUT = 5000;
 
 /** Database */
@@ -37,7 +37,7 @@ const WINSTON = {
 
 export default {
   PORT,
-  JWT_SCRECT,
+  JWT_SECRET,
   JWT_TIMEOUT,
   MONGODB_URL,
   MONGODB_DEBUG,
