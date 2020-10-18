@@ -39,7 +39,7 @@ app.listen(config.PORT, (err) => {
     MongoDB: ${config.DB_MONGODB_URL} 🍀
     
     ${Object.keys(results).map(t => {
-      results[t] = results[t].map(e=> `🍕 App Running On http://${e}:${config.PORT}/\n    `);
+      results[t] = results[t].map(e=> `🍕 App Running on  ->  http://${e}:${config.PORT}/\n    `);
       return results[t].join();
     }).join('')}`
     ),

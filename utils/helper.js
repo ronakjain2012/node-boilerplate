@@ -7,3 +7,4 @@ exports.randomNumber = function (length) {
   }
   return Number(text);
 };
+

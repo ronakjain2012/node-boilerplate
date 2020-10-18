@@ -1,7 +1,7 @@
 'use strict';
 
-// const { setApiCache } = require('../app/middlewares/redisApiCache.js');
-// const config = require('../config/env/index.js');
+const { setApiCache } = require('../app/middlewares/redisApiCache.js');
+const config = require('../config/env/index.js');
 
 const API_STATUS = {
   API_SUCCESS: 200,
@@ -38,7 +38,10 @@ function successResponseWithData(res, msg, data) {
   if (res.pagination) {
     resData['pagination'] = res.pagination;
     resData['pagination']['page'] = resData['pagination']['page'] + 1;
-    // if (config.REDIS_API_CACHE) setApiCache(res.routePath, resData);
+    resData['pagination']['orderAsc'] = resData['pagination']['orderAsc']===1?1:0;
+    if (config.REDIS_API_CACHE) {
+      setApiCache(res.cacheKey, resData);
+    }
   } else {
     resData['pagination'] = false;
   }

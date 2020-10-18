@@ -1,7 +1,7 @@
-import APIError from '../services/error.js';
-import User from '../models/User.js';
+const APIError = require('../services/error.js');
+const User = require('../models/User.js');
 
-export async function register(req, res, next) {
+exports.register = async function register(req, res, next) {
   try {
     const user = await User.create(req.body);
     apiResponse.successResponseWithData(
@@ -12,9 +12,9 @@ export async function register(req, res, next) {
   } catch (err) {
     next(new APIError(null, apiResponse.API_STATUS.UNPROCESSABLE_ENTITY, true, err));
   }
-}
+};
 
-export async function login(req, res, next) {
+exports.login = async function login(req, res, next) {
   try {
     const email = req.body.email;
     const user = await User.findOne({ email });
@@ -30,13 +30,13 @@ export async function login(req, res, next) {
   } catch (err) {
     next(new APIError(null, apiResponse.API_STATUS.UNPROCESSABLE_ENTITY, true, err));
   }
-}
+};
 
-export async function index(req, res, next) {
+exports.index = async function index(req, res, next) {
   try {
     const users = await req.paginationProcess(User.find());
     apiResponse.successResponseWithData(res, 'Users', users);
   } catch (err) {
     next(new APIError(null, apiResponse.API_STATUS.UNPROCESSABLE_ENTITY, true, err));
   }
-}
+};
