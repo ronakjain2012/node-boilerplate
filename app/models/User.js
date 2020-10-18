@@ -1,11 +1,11 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-import uniqueValidator from 'mongoose-unique-validator';
-import bcryptjs from 'bcryptjs';
+const uniqueValidator = require('mongoose-unique-validator');
+const bcryptjs = require('bcryptjs');
 const { hashSync, compareSync } = bcryptjs;
-import jwt from 'jsonwebtoken';
-import config from './../../config/env/index.js';
+const jwt = require('jsonwebtoken');
+const config = require('./../../config/env/index.js');
 
 const UserSchema = new Schema(
   {
@@ -93,4 +93,4 @@ try {
   User = mongoose.model('User', UserSchema);
 }
 
-export default User;
+module.exports = User;

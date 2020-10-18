@@ -1,5 +1,5 @@
-import mongoose from 'mongoose';
-import Category from './Category.js';
+const mongoose = require('mongoose');
+const Category = require('./Category.js');
 const { Schema } = mongoose;
 
 const ProductSchema = new Schema(
@@ -42,8 +42,8 @@ const ProductSchema = new Schema(
   },
   { timestamps: true, virtuals: true },
 );
-ProductSchema.virtual('category_lookup').get( async function () {
-  return (await this.getCategoryLookup());
+ProductSchema.virtual('category_lookup').get(async function () {
+  return await this.getCategoryLookup();
 });
 ProductSchema.methods = {
   toJSON() {
@@ -57,14 +57,14 @@ ProductSchema.methods = {
       discount: this.discount,
       net_price: this.net_price,
       description: this.description,
-      category_lookup: this.category_lookup
+      category_lookup: this.category_lookup,
     };
   },
 };
 
 ProductSchema.method('getCategoryLookup', async function () {
   let category_lookup = await Category.findById(this.category);
-  if(category_lookup){
+  if (category_lookup) {
     return category_lookup.name;
   } else {
     return null;
@@ -73,7 +73,7 @@ ProductSchema.method('getCategoryLookup', async function () {
 
 ProductSchema.pre('save', function (next) {
   if (this.isModified('discount')) {
-    this.net_price = (this.price-((this.price * this.discount) / 100)).toFixed(2);
+    this.net_price = (this.price - (this.price * this.discount) / 100).toFixed(2);
     return next();
   } else {
     this.net_price = this.price;
@@ -89,4 +89,4 @@ try {
   Product = mongoose.model('Product', ProductSchema);
 }
 
-export default Product;
+module.exports = Product;

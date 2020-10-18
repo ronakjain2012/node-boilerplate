@@ -28,7 +28,5 @@ module.exports = {
   /* morgan is for request logging in console */
   MORGAN_ENABLED : false,
   MORGAN_FILE_LOGGING : false,
-  /* WINSTON Request logging */
-  WINSTON_ENABLED : false
 
 };

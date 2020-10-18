@@ -3,12 +3,10 @@ const express = require('express');
 const morgan = require('morgan');
 const compression = require('compression');
 const passport = require('passport');
-const expressWinston = require('express-winston');
 const methodOverride = require('method-override');
 const helmet = require('helmet');
 const cors = require('cors');
 const expressStatusMonitor = require('express-status-monitor');
-const winston = require('winston');
 const rfs = require('rotating-file-stream');
 const path = require('path');
 const config = require('./env/index.js');
@@ -29,6 +27,7 @@ module.exports = (app) => {
 
   app.set('view engine', 'pug');
   app.use('/',WebRoutes);
+ 
   if (config.ENABLE_SUPER_POWERS) {
     if (config.MORGAN_ENABLED) {
       let accessLogStream = null;
@@ -42,21 +41,21 @@ module.exports = (app) => {
         app.use(morgan('combined', {}));
       }
     }
-    if (config.WINSTON_ENABLED) {
-      app.use(
-        expressWinston.logger({
-          transports: [new winston.transports.Console()],
-          format: winston.format.combine(
-            winston.format.colorize(),
-            winston.format.json(),
-          ),
-          colorize: true,
-          meta: true,
-          msg:
-            'HTTP {{req.method}} {{req.url}} {{res.statusCode}} {{res.responseTime}}ms',
-          colorStatus: true,
-        }),
-      );
-    }
+    // if (config.WINSTON_ENABLED) {
+    //   app.use(
+    //     expressWinston.logger({
+    //       transports: [new winston.transports.Console()],
+    //       format: winston.format.combine(
+    //         winston.format.colorize(),
+    //         winston.format.cli() ,
+    //       ),
+    //       colorize: true,
+    //       meta: true,
+    //       msg: '{{req.method}} {{req.url}} {{res.statusCode}} {{res.responseTime}}ms',
+    //       colorStatus: true,
+    //       expressFormat: false,
+    //     }),
+    //   );
+    // }
   }
 };

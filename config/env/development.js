@@ -7,12 +7,12 @@ module.exports = {
     DEFAULT_LANGUAGE: 'EN',
     COPYRIGHT: 'shopie © 2020-2021', 
   },
-  ENABLE_SUPER_POWERS : false,
+  ENABLE_SUPER_POWERS : true,
   PORT : 3000,
   JWT_SECRET : 'JB64!#$sv438KJDsrh!@$KJASB',
   JWT_TIMEOUT : 5000,
   /** Redis API Response Caching */
-  REDIS_API_CACHE: false,
+  REDIS_API_CACHE: true,
   /** Database */
   DB_DRIVER : 'mongodb',
   DB_MONGODB_URL : 'mongodb://localhost:27020/theboilerplate',
@@ -27,6 +27,5 @@ module.exports = {
   /* morgan is for request logging in console */
   MORGAN_ENABLED : false,
   MORGAN_FILE_LOGGING : false,
-  /* WINSTON Request logging */
-  WINSTON_ENABLED : false
+
 };
