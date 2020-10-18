@@ -4,22 +4,20 @@
 
 import Raven from 'raven';
 import PrettyError from 'pretty-error';
-import HTTPStatus from 'http-status';
-
 import config from './../../config/env/index.js';
 import APIError, { RequiredError } from './error.js';
 
 export default function logErrorService(err, req, res, next) {
   if (!err) {
     return new APIError(
-      'Error with the server!',
-      HTTPStatus.INTERNAL_SERVER_ERROR,
+      'Logging Issue!!',
+      apiResponse.API_STATUS.UNPROCESSABLE_ENTITY,
       true,
     );
   }
 
-  if (config.RAVEN.ENABLE_RAVEN_ERROR_LOGGING) {
-    Raven.config(config.RAVEN.RAVEN_ID, {
+  if (config.RAVEN_ENABLED) {
+    Raven.config(config.RAVEN_ID, {
       release: `${config.APP.NAME}@${config.APP.RELESE_VERSION}`,
       environment: `${config.ENV}`,
       name: `${config.APP.NAME}`,
@@ -27,13 +25,9 @@ export default function logErrorService(err, req, res, next) {
       sampleRate: 1,
     }).install();
     Raven.captureException(err);
-  }
-
-  if (config.RAVEN.ENABLE_RAVEN_ERROR_LOGGING) {
     const pe = new PrettyError();
     pe.skipNodeFiles();
     pe.skipPackage('express');
-
     console.log(pe.render(err));
   }
 
@@ -53,7 +47,6 @@ export default function logErrorService(err, req, res, next) {
     }
   }
 
-  res.status(err.status || HTTPStatus.INTERNAL_SERVER_ERROR).json(error);
-
+  res.status(err.status || apiResponse.API_STATUS.UNPROCESSABLE_ENTITY).json(error);
   return next();
 }

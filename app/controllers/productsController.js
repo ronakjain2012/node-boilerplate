@@ -1,4 +1,3 @@
-import HTTPStatus from 'http-status';
 import APIError from '../services/error.js';
 import Product from '../models/Product.js';
 
@@ -8,29 +7,21 @@ export async function index(req, res, next) {
     apiResponse.successResponseWithData(res, 'Product', product);
   } catch (err) {
     console.log(err);
-    next(
-      new APIError(
-        'Opps! Somting went wrong',
-        HTTPStatus.INTERNAL_SERVER_ERROR,
-        true,
-      ),
-    );
+    next(new APIError(null, apiResponse.API_STATUS.UNPROCESSABLE_ENTITY, true, err));
   }
 }
 
 export async function store(req, res, next) {
   try {
     const product = await Product.create(req.body);
-    apiResponse.successResponseWithData(res, 'Product created successfully.', product.toJSON());
+    apiResponse.successResponseWithData(
+      res,
+      'Product created successfully.',
+      product.toJSON(),
+    );
   } catch (err) {
     console.log(err);
-    next(
-      new APIError(
-        'Opps! Somting went wrong',
-        HTTPStatus.INTERNAL_SERVER_ERROR,
-        true,
-      ),
-    );
+    next(new APIError(null, apiResponse.API_STATUS.UNPROCESSABLE_ENTITY, true, err));
   }
 }
 
@@ -39,13 +30,7 @@ export async function show(req, res, next) {
     const product = await Product.findById(req.params.id);
     apiResponse.successResponseWithData(res, 'Product', product.toJSON());
   } catch (err) {
-    next(
-      new APIError(
-        'Opps! Somting went wrong',
-        HTTPStatus.INTERNAL_SERVER_ERROR,
-        true,
-      ),
-    );
+    next(new APIError(null, apiResponse.API_STATUS.UNPROCESSABLE_ENTITY, true, err));
   }
 }
 
@@ -54,44 +39,25 @@ export async function edit(req, res, next) {
     const product = await Product.findById(req.params.id);
     apiResponse.successResponseWithData(res, 'Product', product.toJSON());
   } catch (err) {
-    next(
-      new APIError(
-        'Opps! Somting went wrong',
-        HTTPStatus.INTERNAL_SERVER_ERROR,
-        true,
-      ),
-    );
+    next(new APIError(null, apiResponse.API_STATUS.UNPROCESSABLE_ENTITY, true, err));
   }
 }
 
-
 export async function update(req, res, next) {
   try {
-    let product = await Product.findOneAndUpdate({_id:req.params.id},req.body);
+    let product = await Product.findOneAndUpdate({ _id: req.params.id }, req.body);
     product = await Product.findById(req.params.id);
     apiResponse.successResponseWithData(res, 'Product', product.toJSON());
   } catch (err) {
-    next(
-      new APIError(
-        'Opps! Somting went wrong',
-        HTTPStatus.INTERNAL_SERVER_ERROR,
-        true,
-      ),
-    );
+    next(new APIError(null, apiResponse.API_STATUS.UNPROCESSABLE_ENTITY, true, err));
   }
 }
 
 export async function destroy(req, res, next) {
   try {
-    await Product.findOneAndDelete({_id:req.params.id});
+    await Product.findOneAndDelete({ _id: req.params.id });
     apiResponse.successResponse(res, 'Product deleted.');
   } catch (err) {
-    next(
-      new APIError(
-        'Opps! Somting went wrong',
-        HTTPStatus.INTERNAL_SERVER_ERROR,
-        true,
-      ),
-    );
+    next(new APIError(null, apiResponse.API_STATUS.UNPROCESSABLE_ENTITY, true, err));
   }
 }

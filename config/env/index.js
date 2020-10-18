@@ -7,15 +7,14 @@ import {
   ENV_STAGING,
   ENV_PRODUCTION,
 } from './../const/const.js';
-
-// require('dotenv').config();
-
+import dotenv from 'dotenv';
 import path from 'path';
 import __default from './default.js';
 import development from './development.js';
 import integration from './integration.js';
 import staging from './staging.js';
 import production from './production.js';
+import fs from 'fs';
 const __dirname = path.resolve();
 
 function envConfig(env) {
@@ -38,7 +37,14 @@ function withDefault() {
   let configDefault = {};
   configDefault.ENV = env;
   configDefault.ROOT_DIR = path.join(__dirname, '');
-  return Object.assign({}, __default, configDefault, envConfig(env));
+  let fromEnv = dotenv.parse(fs.readFileSync('.env'));
+  let settings = {
+    ...__default, ...configDefault, ...envConfig(env)
+  };
+  for(var item in fromEnv){
+    settings[item] = fromEnv[item];
+  }
+  return settings;
 }
 
 export default withDefault();

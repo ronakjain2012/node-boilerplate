@@ -1,10 +1,7 @@
 import jwt from 'jsonwebtoken';
 import config from '../../config/env/index.js';
-import HTTPStatus from 'http-status';
 import APIError from '../services/error.js';
 import User from '../models/User.js';
-
-
 
 export async function checkToken(req, res, next) {
   try {
@@ -16,24 +13,18 @@ export async function checkToken(req, res, next) {
     if (token) {
       jwt.verify(token, config.JWT_SECRET, async (err, decoded) => {
         if (err) {
-            apiResponse.expiredAuthResponse(res, 'invalid token.');
+          apiResponse.expiredAuthResponse(res, 'Token is invalid, Please refresh token or Authenticate again');
         } else {
-        const user = await User.findById(decoded._id);
+          const user = await User.findById(decoded._id);
           req.User = user;
           next();
         }
       });
     } else {
-        apiResponse.unauthorizedResponse(res, 'invalid credentials.');
+      apiResponse.unauthorizedResponse(res, 'Token Missing, Please check headers or Authenticate to obtain new token');
     }
   } catch (err) {
-    next(
-      new APIError(
-        'Sorry, Token Missing.',
-        HTTPStatus.INTERNAL_SERVER_ERROR,
-        true,
-      ),
-    );
+    next(new APIError(null, apiResponse.API_STATUS.UNPROCESSABLE_ENTITY, true, err));
   }
 }
 
