@@ -1,5 +1,6 @@
 const redis = require('redis');
 const config = require('../../config/env/index.js');
+const logger = require('../../utils/logger.js');
 
 const PORT_REDIS = process.env.REDIS_PORT || 6379;
 const redisClient = redis.createClient(PORT_REDIS);
@@ -17,7 +18,10 @@ exports.getApiCache = function getApiCache(req, res, next) {
     }
     redisClient.get(cacheKey+key, (error, data) => {
       if (error) res.status(400).send(error);
-      if (data !== null) res.status(200).send(JSON.parse(data));
+      if (data !== null) {
+        logger.info(cacheKey+key+' || Serverd from cache.');
+        res.status(200).send(JSON.parse(data));
+      }
       else next();
     });
   } else {
