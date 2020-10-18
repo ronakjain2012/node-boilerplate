@@ -1,21 +1,21 @@
-import bodyParser from 'body-parser';
-import express from 'express';
-import morgan from 'morgan';
-import compression from 'compression';
-import passport from 'passport';
-import expressWinston from 'express-winston';
-import methodOverride from 'method-override';
-import helmet from 'helmet';
-import cors from 'cors';
-import expressStatusMonitor from 'express-status-monitor';
-import winston from 'winston';
-import rfs from 'rotating-file-stream';
-import path from 'path';
-import config from './env/index.js';
-import WebRoutes from './../routes/web.js';
+const bodyParser = require('body-parser');
+const express = require('express');
+const morgan = require('morgan');
+const compression = require('compression');
+const passport = require('passport');
+const expressWinston = require('express-winston');
+const methodOverride = require('method-override');
+const helmet = require('helmet');
+const cors = require('cors');
+const expressStatusMonitor = require('express-status-monitor');
+const winston = require('winston');
+const rfs = require('rotating-file-stream');
+const path = require('path');
+const config = require('./env/index.js');
+const WebRoutes = require('./../routes/web.js');
 
 
-export default (app) => {
+module.exports = (app) => {
   app.use(compression());
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: true }));

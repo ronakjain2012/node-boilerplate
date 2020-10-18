@@ -1,7 +1,7 @@
-import express from 'express';
-import APIError from '../app/services/error.js';
-import logErrorService from '../app/services/log.js';
-import ApiRoutes from './api.js';
+const express = require('express');
+const APIError = require('../app/services/error.js');
+const logErrorService = require('../app/services/log.js');
+const ApiRoutes = require('./api.js');
 
 const routes = express.Router();
 
@@ -11,4 +11,4 @@ routes.all('/api/*', (req, res, next) =>
 );
 
 routes.use(logErrorService);
-export default routes;
+module.exports = routes;
