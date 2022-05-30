@@ -3,7 +3,6 @@ const express = require('express');
 const morgan = require('morgan');
 const compression = require('compression');
 const passport = require('passport');
-const methodOverride = require('method-override');
 const helmet = require('helmet');
 const cors = require('cors');
 const expressStatusMonitor = require('express-status-monitor');
@@ -21,7 +20,6 @@ module.exports = (app) => {
   app.use(helmet());
   app.use(cors());
   app.use(expressStatusMonitor());
-  app.use(methodOverride());  
   app.use(express.static(path.join(config.ROOT_DIR, 'public')));
   app.set('views', config.ROOT_DIR + '/public/views');
 

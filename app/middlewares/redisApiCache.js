@@ -2,7 +2,7 @@ const redis = require('redis');
 const config = require('../../config/env/index.js');
 const logger = require('../../utils/logger.js');
 
-const PORT_REDIS = process.env.REDIS_PORT || 6379;
+const PORT_REDIS = process.env.REDIS_PORT || 50986;
 const redisClient = redis.createClient(PORT_REDIS);
 
 exports.setApiCache = function setApiCache(key, value) {
