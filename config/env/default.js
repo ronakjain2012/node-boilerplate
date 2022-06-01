@@ -1,32 +1,46 @@
 module.exports = {
-  /** Application */  
+  /** Application */
   APP: {
-    NAME: 'shopie',
-    RELESE_VERSION: '0.0.1',
-    LOGO: '',
+    NAME: 'node-boilerplate',
+    RELESE_VERSION: '0.0.2',
+    LOGO: 'https://i.ibb.co/vPRZSFQ/ronak.png',
     DEFAULT_LANGUAGE: 'EN',
-    COPYRIGHT: 'shopie © 2020-2021', 
+    COPYRIGHT: 'Made with Love in India',
+    PORT: 3000, // Port for server
   },
-  ENABLE_SUPER_POWERS : false,
-  PORT : 3000,
-  JWT_SECRET : 'JB64!#$sv438KJDsrh!@$KJASB',
-  JWT_TIMEOUT : 5000,
-  
-  /** Redis API Response Caching */
-  REDIS_API_CACHE: true,
-  /** Database */
-  DB_DRIVER : 'mongodb',
-  DB_MONGODB_URL : 'mongodb+srv://loppy:loppy_qw12@node-vue-shop.om6wd.gcp.mongodb.net/shopie?retryWrites=true&w=majority',
-  DB_MONGODB_DEBUG : false,
 
-  /** Integrations */
-  /* randommer for random data */
-  RNADOMMER_API:'',
+  AUTH: {
+    JWT_SECRET: 'JB64!#$sv438KJDsrh!@$KJASB',
+    JWT_TIMEOUT: 5000,
+  },
+
+  LOGGING: {
+    /* morgan is for request logging in console */
+    MORGAN_ENABLED: false,
+    MORGAN_FILE_LOGGING: false,
+  },
+
+  DB: {
+    DB_DRIVER: 'MONGODB', // MONGODB, MYSQL
+    MONGODB: {
+      URL: 'mongodb://localhost:27017/theboilerplate',
+      DEBUG: false,
+      USERNAME: '',
+      PASSWORD: '',
+    }
+  },
+
+  REDIS: {
+    ENABLE: false,
+    PORT: '',
+    URL: '',
+    REDIS_API_CACHE: true, // API Response Caching 
+  },
+
   /* raven is morden tool to log errors/exceptions with help of mail and dashboard sentry.io */
-  RAVEN_ENABLED: false,
-  RAVEN_ID: '',
-  /* morgan is for request logging in console */
-  MORGAN_ENABLED : false,
-  MORGAN_FILE_LOGGING : false,
+  SANTRY: {
+    RAVEN_ENABLED: false,
+    RAVEN_ID: ''
+  },
 
 };

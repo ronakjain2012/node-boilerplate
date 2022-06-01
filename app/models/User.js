@@ -75,7 +75,7 @@ UserSchema.methods = {
       {
         _id: this._id,
       },
-      config.JWT_SECRET,
+      config.AUTH.JWT_SECRET,
     );
   },
   toAuthJSON() {

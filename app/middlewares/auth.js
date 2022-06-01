@@ -11,7 +11,7 @@ async function checkToken(req, res, next) {
       token = token.slice(7, token.length);
     }
     if (token) {
-      jwt.verify(token, config.JWT_SECRET, async (err, decoded) => {
+      jwt.verify(token, config.AUTH.JWT_SECRET, async (err, decoded) => {
         if (err) {
           apiResponse.expiredAuthResponse(
             res,

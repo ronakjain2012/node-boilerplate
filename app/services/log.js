@@ -17,8 +17,8 @@ function logErrorService(err, req, res, next) {
     );
   }
 
-  if (config.RAVEN_ENABLED) {
-    Raven.config(config.RAVEN_ID, {
+  if (config.SANTRY.RAVEN_ENABLED) {
+    Raven.config(config.SANTRY.RAVEN_ID, {
       release: `${config.APP.NAME}@${config.APP.RELESE_VERSION}`,
       environment: `${config.ENV}`,
       name: `${config.APP.NAME}`,
