@@ -25,14 +25,14 @@ function connect() {
     })
     .on('disconnected', connect);
   try {
-    return mongoose.connect(config.DB_MONGODB_URL, {
+    return mongoose.connect(config.DB[config.DB_DRIVER].URL, {
       keepAlive: 1,
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useCreateIndex: true
     });
   } catch (err) {
-    return mongoose.createConnection(config.DB_MONGODB_URL, {
+    return mongoose.createConnection(config.DB[config.DB_DRIVER].URL, {
       keepAlive: 1,
       useNewUrlParser: true,
       useUnifiedTopology: true,

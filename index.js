@@ -34,9 +34,8 @@ app.listen(config.PORT, (err) => {
     🍺🍺🍺🍺🍺🍺🍺🍺🍺🍺🍺🍺🍺🍺🍺🍺🍺🍺🍺🍺🍺🍺🍺🍺🍺🍺
     App listen on port: ${config.PORT} 🍕
     Env: ${config.ENV} 🦄
-    SuperPowers: ${config.ENABLE_SUPER_POWERS} 🌪
     Root: ${config.ROOT_DIR} 👶
-    MongoDB: ${config.DB_MONGODB_URL} 🍀
+    DB: ${config.DB[config.DB_DRIVER].URL} 🍀
     
     ${Object.keys(results).map(t => {
       results[t] = results[t].map(e=> `🍕 App Running on  ->  http://${e}:${config.PORT}/\n    `);
