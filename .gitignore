@@ -1,0 +1,7 @@
+node_modules
+*.lock
+.env
+build
+/.idea
+/.vs
+*.log
