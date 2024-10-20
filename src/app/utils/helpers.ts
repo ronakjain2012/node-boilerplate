@@ -1,6 +1,7 @@
 import dayjs from 'dayjs';
 import fs from 'fs';
 import config from '@/config';
+import crypto from 'crypto';
 
 export const getNow = (format = config.detetime.default) => dayjs().format(format);
 
@@ -15,6 +16,8 @@ export const randomNumber = (length = 10) => {
   }
   return Number(text);
 };
+
+export const getRandomID = () => crypto.randomUUID();
 
 export const jsonToCsvBooks = (filename) => {
   const data = fs.readFileSync(filename, 'utf8');
@@ -35,5 +38,15 @@ export const toString = (data) => {
     return data;
   } else {
     return JSON.stringify(data);
+  }
+};
+
+export const toJSON = (data) => {
+  if (data === null || data === undefined) {
+    return data;
+  } else if (['number', 'string', 'boolean'].includes(typeof data)) {
+    return data;
+  } else {
+    return JSON.parse(data);
   }
 };

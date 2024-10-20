@@ -1,6 +1,7 @@
 import { envConfig } from './envSchema';
 import Joi from 'joi';
-
+import path from 'path';
+const _dirname = path.resolve();
 const envVarsSchema = Joi.object()
   .keys({
     NODE_ENV: Joi.string().valid('production', 'development', 'test').required(),
@@ -18,6 +19,7 @@ export default {
   env: envVars.NODE_ENV,
   port: envVars.PORT,
   appName: 'Node BP',
+  root:_dirname,
   logs: {
     level: 'info',
   },

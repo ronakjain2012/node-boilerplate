@@ -10,7 +10,7 @@ const customFormatter = (info) => {
   function formatValue(value) {
     if (typeof value === 'object') {
       if (Array.isArray(value)) {
-        return value.map(formatValue);
+        return value.map(toString);
       } else {
         return toString(value); // Indent JSON for better readability
       }
@@ -58,6 +58,14 @@ if (process.env.NODE_ENV !== 'development') {
     new winston.transports.File({
       level: 'error',
       filename: `storage/logs/error${filePostFix}.log`,
+      maxsize: 1048576,
+      maxFiles: 10,
+      handleExceptions: true,
+      format: sameLogFormat(),
+    }),
+    new winston.transports.File({
+      level: 'warn',
+      filename: `storage/logs/warn${filePostFix}.log`,
       maxsize: 1048576,
       maxFiles: 10,
       handleExceptions: true,
