@@ -34,6 +34,9 @@
       "@/helper": [
         "./src/app/utils/helpers.ts"
       ],
+      "@/apiError": [
+        "./src/app/utils/APIError.ts"
+      ],
     }
   },
   "include": [

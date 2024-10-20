@@ -13,6 +13,7 @@ router.use((req, res, next) => {
   next();
 });
 
+
 const defaultRoutes = [
   {
     path: '/api',
