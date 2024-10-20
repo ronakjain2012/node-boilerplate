@@ -3,7 +3,6 @@ import apiRoutes from './api.routes';
 import docsRoute from './docs.routes';
 import APIError from '../utils/APIError';
 import httpStatus from 'http-status';
-import { UUIDV1 } from 'sequelize';
 import { getRandomID } from '@/helper';
 
 const router = express.Router();

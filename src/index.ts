@@ -24,7 +24,11 @@ process.on('unhandledRejection', unexpectedErrorHandler);
 async function startServer(application) {
   application
     .listen(config.port, () => {
-      logger.info(`->  Server listening on port: ${config.port}`);
+      logger.info(`
+      ->
+        Server listening on port: ${config.port}
+        Environment: ${config.env}
+      <-`);
     })
     .on('error', (err) => {
       logger.error(err);

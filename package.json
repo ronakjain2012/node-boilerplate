@@ -27,6 +27,7 @@
     "cors": "^2.8.5",
     "dayjs": "^1.11.13",
     "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
     "env-schema": "^6.0.0",
     "express": "^4.21.1",
     "express-rate-limit": "^7.4.1",
