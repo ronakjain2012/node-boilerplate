@@ -1,6 +1,8 @@
-.vscode/
-node_modules/
-dist/
+node_modules
+*.lock
 .env
-coverage
-storage/logs/
+build
+/.idea
+/.vs
+*.log
+.vscode
