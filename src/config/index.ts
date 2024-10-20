@@ -17,7 +17,20 @@ if (error) {
 export default {
   env: envVars.NODE_ENV,
   port: envVars.PORT,
+  appName: 'Node BP',
   logs: {
     level: 'info',
+  },
+  detetime: {
+    default: "YYYY-MM-DD HH:mm:ss",
+    shortDate: 'YY-MM-DD',
+    longDate: 'YYYY-MM-DD',
+    shortTime: 'HH:mm',
+    longTime: 'HH:mm:ss',
+    humanLongTime: "hh:mm:ss A",
+    humanShortTime: "hh:mm A",
+    longDataTime: "YYYY-MM-DD HH:mm:ss",
+    shortDataTime: "YY-MM-DD hh:mm"
   }
+
 };

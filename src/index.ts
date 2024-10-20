@@ -30,11 +30,18 @@ async function startServer(application) {
    **/
   // await require('./loaders').default({ expressApp: app });
 
+  logger.info("111");
+  logger.info({"2222":1111});
+  logger.info(["33333"]);
+  logger.info(1233,["44444444444"]);
+  logger.info("ssasad",{"5555555555555":212});
+  logger.info("ssasad",{"6666666":212},{"666666662":212},{"66666663":212});
+
   application
     .listen(config.port, () => {
       logger.info(`
           ################################################
-          🛡️  Server listening on port: ${config.port} 🛡️
+          #  Server listening on port: ${config.port}    #
           ################################################
         `);
     })
