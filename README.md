@@ -40,3 +40,7 @@ It's very easy to install & use this boilerplate in for project directory:
 ├───config ---> Env values
 └───docs ---> Swagger Documentation
 ```
+
+### Author
+
+Ronak Bokaria / [@ronakjain2012](https://github.com/ronakjain2012) / [X.com](https://twitter.com/Ronak_bokaria) / [Telegram](https://t.me/ronakjain2012) 
