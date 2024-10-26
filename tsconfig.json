@@ -37,6 +37,9 @@
       "@/apiError": [
         "./src/app/utils/APIError.ts"
       ],
+      "@/bus": [
+        "./src/app/services/eventActions.ts"
+      ],
     }
   },
   "include": [

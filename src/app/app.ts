@@ -65,8 +65,10 @@ if (config.env === 'development') {
       return match ? match[1].replace(/\\(.)/g, '$1').split('/') : '<complex:' + thing.toString() + '>';
     }
   }
-
+  console.log('──────────────── Routes Start ──────────────────────')
   app._router.stack.forEach(print.bind(null, []));
+  console.log('──────────────── Routes End ────────────────────────',"\n")
+
 }
 
 // convert error to ApiError, if needed
