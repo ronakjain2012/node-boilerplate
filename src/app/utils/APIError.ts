@@ -1,5 +1,5 @@
-import logger from "@/logger";
-import { errorLog } from "@/bus";
+import logger from '@/logger';
+import { errorLog } from '@/bus';
 
 class ExtendableError extends Error {
   constructor(message, status, isPublic, error, extraMeta) {
@@ -9,7 +9,10 @@ class ExtendableError extends Error {
     this.status = status;
     this.isPublic = isPublic;
     logger.error(`@Error: ${message}`, status, error.stack, extraMeta);
-    errorLog(message, error);
+    errorLog(status, `@Error: ${message}`, {
+      error: error.stack,
+      extraMeta,
+    });
   }
 }
 

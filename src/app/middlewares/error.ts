@@ -2,6 +2,7 @@ import httpStatus from 'http-status';
 import config from '../../config/index';
 import APIError from '../utils/APIError';
 import logger from '../services/logger';
+import { basicAppInfoByRequest } from '@/helper';
 
 export const errorConverter = (err, req, res, next) => {
   let error = err;
@@ -10,7 +11,7 @@ export const errorConverter = (err, req, res, next) => {
     //   error.statusCode || error instanceof mongoose.Error ? httpStatus.BAD_REQUEST : httpStatus.INTERNAL_SERVER_ERROR;
     const statusCode = error.statusCode || httpStatus.INTERNAL_SERVER_ERROR;
     const message = error.message || httpStatus[statusCode];
-    error = new APIError(statusCode, message, false, err.stack);
+    error = new APIError(statusCode, message, false, err.stack,basicAppInfoByRequest(req));
   }
   next(error);
 };

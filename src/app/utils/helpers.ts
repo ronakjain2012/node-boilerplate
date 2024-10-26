@@ -2,6 +2,8 @@ import dayjs from 'dayjs';
 import fs from 'fs';
 import config from '@/config';
 import crypto from 'crypto';
+import logger from '@/logger';
+import app from '../app';
 
 export const getNow = (format = config.detetime.default) => dayjs().format(format);
 
@@ -31,13 +33,13 @@ export const jsonToCsvBooks = (filename) => {
   return csv;
 };
 
-export const toString = (data) => {
+export const toString = (data, format = 0) => {
   if (data === null) {
     return null;
   } else if (['number', 'string', 'boolean'].includes(typeof data)) {
     return data;
   } else {
-    return JSON.stringify(data);
+    return JSON.stringify(data, null, format);
   }
 };
 
@@ -48,5 +50,30 @@ export const toJSON = (data) => {
     return data;
   } else {
     return JSON.parse(data);
+  }
+};
+
+export const axiosErrorLogger = (error) => {
+  logger.error('AxiosRequest error',{
+    code: error.code,
+    message: error.message,
+    response: error.response ? error.response.data : 'No Response',
+    config: error.config ? error.config : 'No Config',
+  });
+  if (error.code === 'ECONNABORTED') {
+    logger.error('Request timed out');
+  }
+};
+
+export const basicAppInfoByRequest = (req) => {
+  return {
+    appName: config.appName,
+    appEnvironment: config.env,
+    requestTime: getNow(),
+    requestId: req.id,
+    requestUrl: req.url,
+    requestMethod: req.method,
+    requestBody: req.body,
+    requestQuery: req.query,
   }
 };
