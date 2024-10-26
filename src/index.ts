@@ -25,10 +25,13 @@ async function startServer(application) {
   application
     .listen(config.port, () => {
       logger.info(`
-      ->
-        Server listening on port: ${config.port}
-        Environment: ${config.env}
-      <-`);
+      
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+      http://localhost:${config.port}/
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+────────────────────────────────────────      
+            ¯\_( ͡❛ ͜ʖ ͡❛)_/¯
+        `);
     })
     .on('error', (err) => {
       logger.error(err);
