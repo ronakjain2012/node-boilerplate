@@ -3,7 +3,6 @@ import fs from 'fs';
 import config from '@/config';
 import crypto from 'crypto';
 import logger from '@/logger';
-import app from '../app';
 
 export const getNow = (format = config.detetime.default) => dayjs().format(format);
 
