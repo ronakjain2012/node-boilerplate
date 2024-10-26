@@ -3,7 +3,7 @@ import apiRoutes from './api.routes';
 import docsRoute from './docs.routes';
 import APIError from '../utils/APIError';
 import httpStatus from 'http-status';
-import { getNow, getRandomID } from '@/helper';
+import { basicAppInfoByRequest, getNow, getRandomID } from '@/helper';
 
 const router = express.Router();
 
@@ -39,14 +39,7 @@ for (let i = 0; i < devRoutes.length; i++) {
 // send back a 404 error for any unknown request and error handler middleware will handle it
 router.use((req, res, next) => {
   next(
-    new APIError(httpStatus.NOT_FOUND, 'Not found', new Error('Not found'), true, {
-      requestId: req.id,
-      requestUrl: req.url,
-      requestMethod: req.method,
-      requestBody: req.body,
-      requestQuery: req.query,
-      requestTime: getNow(),
-    }),
+    new APIError(httpStatus.NOT_FOUND, 'Not found', new Error('Not found'), true, basicAppInfoByRequest(req)),
   );
 });
 

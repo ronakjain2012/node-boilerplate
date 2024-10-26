@@ -3,6 +3,7 @@ import fs from 'fs';
 import config from '@/config';
 import crypto from 'crypto';
 import logger from '@/logger';
+import app from '../app';
 
 export const getNow = (format = config.detetime.default) => dayjs().format(format);
 
@@ -61,5 +62,18 @@ export const axiosErrorLogger = (error) => {
   });
   if (error.code === 'ECONNABORTED') {
     logger.error('Request timed out');
+  }
+};
+
+export const basicAppInfoByRequest = (req) => {
+  return {
+    appName: config.appName,
+    appEnvironment: config.env,
+    requestTime: getNow(),
+    requestId: req.id,
+    requestUrl: req.url,
+    requestMethod: req.method,
+    requestBody: req.body,
+    requestQuery: req.query,
   }
 };
