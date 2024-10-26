@@ -6,11 +6,13 @@ labels: 'Status: Unconfirmed'
 
 ---
 
-## Impact Analysis/Task Details
+## Task Title
 
-1. Task Title
-   - Impact: ....
-   - Improvement: ...
-2. 
+### Impact
+Impact details
+
+### Improvement/Idea
+Improvement details
 
 ## Changes Required
+Files / Changes / Use

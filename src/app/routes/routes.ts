@@ -3,7 +3,7 @@ import apiRoutes from './api.routes';
 import docsRoute from './docs.routes';
 import APIError from '../utils/APIError';
 import httpStatus from 'http-status';
-import { getRandomID } from '@/helper';
+import { getNow, getRandomID } from '@/helper';
 
 const router = express.Router();
 
@@ -45,6 +45,7 @@ router.use((req, res, next) => {
       requestMethod: req.method,
       requestBody: req.body,
       requestQuery: req.query,
+      requestTime: getNow(),
     }),
   );
 });
