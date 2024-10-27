@@ -2,6 +2,7 @@ import EventEmitter from 'events';
 import { sendToZulip } from './zulip';
 import { toString } from '@/helper';
 import { sendToTelegram } from './telegram';
+import logger from './logger';
 
 const evnts = new EventEmitter();
 
@@ -14,10 +15,11 @@ ${toString(data.data, 2)}
     data.topic,
   );
   sendToTelegram(data.data, '#error');
+  logger.info(data);
 });
 
 evnts.on('al', (data) => {
-  console.log(data);
+  logger.info(data);
 });
 
 export default evnts;
